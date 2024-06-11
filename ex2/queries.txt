@@ -1,0 +1,54 @@
+Quantas livros estão presentes na ontologia:
+
+prefix : <http://rpcw.di.uminho.pt/2024/LIVROS/>
+select ?livro where { 
+	?livro rdf:type :Book.
+}
+
+Quais os títulos dos livros em que um dos autores tem apelido "Austen" ? (lista de títulos
+ordenada alfabeticamente):
+
+prefix : <http://rpcw.di.uminho.pt/2024/LIVROS/>
+select distinct ?name where { 
+	?livro :hasAuthor ?author.
+    ?author :apelido "Austen".
+    ?livro :name ?name
+}order by ?name
+
+Qual a distribuição de livros por género? (lista de géneros sem repetições e ordenada
+alfabeticamente em que a cada género está associado o número de livros pertencente a esse
+género):
+
+SELECT ?genre (COUNT(?book) AS ?numBooks)
+WHERE {
+  ?book rdf:type :Book .
+  ?book :fromGenero ?genre .
+}
+GROUP BY ?genre
+ORDER BY ?genre
+
+
+Qual a distribuição de livros por autor? (lista de autores sem repetições e ordenada
+alfabeticamente em que a cada autor está associado o número de livros escritos por esse
+autor);
+
+SELECT distinct ?author (COUNT(?book) AS ?numBooks)
+WHERE {
+  ?book rdf:type :Book .
+  ?book :hasAuthor ?author .
+}
+GROUP BY ?author
+ORDER BY ?author
+
+Quais os títulos dos livros pertencentes ao género "Adventure" ? (lista ordenada
+alfabeticamente de títulos)
+
+SELECT distinct ?nome
+WHERE {
+  ?book rdf:type :Book .
+  ?book :fromGenero ?gen .
+  ?gen :name "Adventure".
+  ?book :name ?nome.
+}
+ORDER BY ?nome
+
