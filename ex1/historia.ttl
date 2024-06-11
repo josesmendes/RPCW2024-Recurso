@@ -26,16 +26,16 @@
 :speaksLanguage rdfs:range :Language .
 
 :teachesCourse rdf:type rdf:Property .
-:teachesCourse rdfs:domain :Teacher .
+:teachesCourse rdfs:domain :Person .
 :teachesCourse rdfs:range :Course .
 
 :isEnrolledIn rdf:type rdf:Property .
-:isEnrolledIn rdfs:domain :Student .
+:isEnrolledIn rdfs:domain :Person .
 :isEnrolledIn rdfs:range :Course .
 
 :teacherOf rdf:type rdf:Property .
 :teacherOf rdfs:domain :Course .
-:teacherOf rdfs:range :Teacher .
+:teacherOf rdfs:range :Person .
 
 :friendsWith rdf:type rdf:Property .
 :friendsWith rdfs:domain :Person .
@@ -62,7 +62,7 @@
 :Ana rdf:type :Person ;
     :friendsWith :Eduardo .
 
-:HelmutRatz rdf:type :Teacher ;
+:HelmutRatz rdf:type :Person ;
     :origin "Germany" ;
     :teachesCourse :GermanCourse ;
     :fromSchool :LACH.
@@ -70,7 +70,7 @@
 :LACH rdf:type :School ;
     :name "Letras, Artes e Ciências Humanas".
 
-:Hanna rdf:type :Student ;
+:Hanna rdf:type :Person ;
     :origin "Germany" ;
     :speaksLanguage "German" ;
     :isEnrolledIn :Biotec ;
