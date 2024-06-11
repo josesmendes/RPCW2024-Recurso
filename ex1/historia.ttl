@@ -1,0 +1,82 @@
+@prefix : <http://rpcw.di.uminho.pt/2024/historia#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:Person rdf:type rdfs:Class .
+:Language rdf:type rdfs:Class .
+:Course rdf:type rdfs:Class .
+:Teacher rdf:type rdfs:Class .
+:Student rdf:type rdfs:Class .
+:School rdf:type rdfs:Class .
+
+:age rdf:type rdf:Property .
+:age rdfs:domain :Person .
+:age rdfs:range xsd:integer .
+
+:origin rdf:type rdf:Property .
+:origin rdfs:domain :Person .
+:origin rdfs:range xsd:string .
+
+:name rdf:type rdf:Property .
+:name rdfs:domain :School .
+:name rdfs:range xsd:string .
+
+:speaksLanguage rdf:type rdf:Property .
+:speaksLanguage rdfs:domain :Person .
+:speaksLanguage rdfs:range :Language .
+
+:teachesCourse rdf:type rdf:Property .
+:teachesCourse rdfs:domain :Teacher .
+:teachesCourse rdfs:range :Course .
+
+:isEnrolledIn rdf:type rdf:Property .
+:isEnrolledIn rdfs:domain :Student .
+:isEnrolledIn rdfs:range :Course .
+
+:teacherOf rdf:type rdf:Property .
+:teacherOf rdfs:domain :Course .
+:teacherOf rdfs:range :Teacher .
+
+:friendsWith rdf:type rdf:Property .
+:friendsWith rdfs:domain :Person .
+:friendsWith rdfs:range :Person .
+
+:fromSchool rdf:type rdf:Property .
+:fromSchool rdfs:domain :Person .
+:fromSchool rdfs:range :School .
+
+:Eduardo rdf:type :Person ;
+    :age 21 ;
+    :origin "Porto" ;
+    :speaksLanguage "Portuguese" ;
+    :speaksLanguage "Spanish" ;
+    :speaksLanguage "English" ;
+    :isEnrolledIn :GermanCourse ;
+    :friendsWith :Carlos ;
+    :friendsWith :Ana ;
+    :friendsWith :Hana .
+
+:Carlos rdf:type :Person ;
+    :friendsWith :Eduardo .
+
+:Ana rdf:type :Person ;
+    :friendsWith :Eduardo .
+
+:HelmutRatz rdf:type :Teacher ;
+    :origin "Germany" ;
+    :teachesCourse :GermanCourse ;
+    :fromSchool :LACH.
+
+:LACH rdf:type :School ;
+    :name "Letras, Artes e Ciências Humanas".
+
+:Hanna rdf:type :Student ;
+    :origin "Germany" ;
+    :speaksLanguage "German" ;
+    :isEnrolledIn :Biotec ;
+    :friendsWith :Eduardo .
+
+:GermanCourse rdf:type :Course ;
+    :teacherOf :HelmutRatz .
+
+:Biotec rdf:type :Course .
